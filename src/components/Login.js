@@ -99,8 +99,6 @@ function Login({
       <div className="login-container">
         <h2 className="login-title">Login Page</h2>
         <div className="password-section">
-          <p className="password-info">Capture Counter: {passwordCounter}</p>
-          <p className="password-info">Capture Number: {passwordNumber}</p>
           <div className="input-container">
             <div className="password-field">
               <input
@@ -119,6 +117,8 @@ function Login({
               </button>
             </div>
           </div>
+          <p className="password-info">Capture Counter: {passwordCounter}</p>
+          <p className="password-info">Capture Number: {passwordNumber}</p>
         </div>
         <div className="button-container">
           <Button
