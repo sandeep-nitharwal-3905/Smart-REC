@@ -58,9 +58,9 @@ const ContestNotification = () => {
   // Format Facebook message
   const formatFacebookMsg = (contest) => {
     const timeIST = formatTimeIST(contest.timestamp);
-    return `Upcoming Contest: 𝐂𝐨𝐝𝐞𝐟𝐨𝐫𝐜𝐞𝐬 𝐑𝐨𝐮𝐧𝐝 (𝐃𝐢𝐯. 𝟐)\nDate: ${formatDate(
+    return `Upcoming Contest: ${contest.name}\nDate: ${formatDate(
       contest.timestamp
-    )}\nContest Timing: ${timeIST} 𝐈𝐒𝐓\nDuration: ${
+    )}\nContest Timing: ${timeIST} IST\nDuration: ${
       contest.duration
     }\nContest link: ${getContestLink(contest)}\nHappy Coding! 😀`;
   };
