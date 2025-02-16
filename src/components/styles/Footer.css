@@ -1,0 +1,71 @@
+
+/* Footer Styles */
+.footer {
+    background-color: rgba(18, 18, 18, 0.95);
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .footer-text {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+  
+  .footer-link {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-link:hover {
+    color: #f9cb28;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem;
+    }
+  
+    .navbar-title {
+      font-size: 1.25rem;
+    }
+  
+    .container {
+      padding: 0 1rem;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    .contest-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .contest-card {
+    animation: fadeIn 0.3s ease-out;
+  }
+  

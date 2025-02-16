@@ -1,0 +1,364 @@
+/* Define root variables for colors and gradients */
+:root {
+  --primary: #00f9ff;
+  --secondary: #4c66ff;
+  --background: #121212;
+  --card-bg: rgba(20, 25, 37, 0.9);
+  --text: #e0e0e0;
+  --accent: #ff2a6d;
+  --gradient: linear-gradient(135deg, #00f9ff, #4c66ff);
+}
+
+/* Universal Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Cyberpunk Grid Background with subtle glow effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      transparent 0%,
+      rgba(0, 255, 242, 0.15) 50%,
+      transparent 100%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(76, 102, 255, 0.15) 50%,
+      transparent 100%
+    );
+  background-size: 60px 60px;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(0, 255, 242, 0.1);
+}
+
+/* Glassmorphism Navbar */
+.navbar {
+  background: rgba(20, 25, 37, 0.8);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+}
+
+.navbar-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(0, 255, 242, 0.4);
+}
+
+.navbar-logo img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-logo img:hover {
+  animation: rotateInfinite 1s linear infinite;
+  box-shadow: 0 0 20px var(--primary);
+}
+
+@keyframes rotateInfinite {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Glassmorphism Main Container */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+  min-height: calc(100vh - 180px); /* Adjust based on header + footer height */
+}
+
+/* Title with Glow */
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  text-shadow: 0 0 10px rgba(0, 255, 242, 0.4);
+}
+
+/* Neumorphism Loading Animation */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.loading::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--card-bg);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  border-right-color: var(--secondary);
+  animation: spinner 1s ease infinite;
+  box-shadow: 0 4px 15px rgba(0, 255, 242, 0.4);
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Neumorphic Buttons */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.btn {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 2px solid var(--primary);
+  padding: 0.8rem 1.5rem;
+  border-radius: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 255, 242, 0.2), 0 -4px 10px rgba(0, 255, 242, 0.15);
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 255, 242, 0.3);
+}
+
+.btn.active-btn {
+  background: var(--gradient);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 15px rgba(0, 255, 242, 0.4);
+}
+
+.btn-all {
+  background: var(--gradient);
+  border: none;
+}
+
+/* Contest Cards with Neumorphism */
+.contest-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.contest-card {
+  background: var(--card-bg);
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 255, 242, 0.1), 0 -4px 15px rgba(0, 255, 242, 0.1);
+}
+
+.contest-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 255, 242, 0.3);
+}
+
+.contest-platform {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.contest-name {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.contest-duration,
+.contest-start {
+  font-size: 0.9rem;
+  color: #8888a0;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer with Glass Effect */
+.footer {
+  background: rgba(20, 25, 37, 0.8);
+  padding: 1.5rem 0;
+  text-align: center;
+  border-top: 2px solid var(--primary);
+  width: 100%;
+  margin-top: auto;
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+}
+
+.footer-text {
+  color: var(--text);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.footer-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--secondary);
+  text-shadow: 0 0 10px var(--primary);
+}
+
+/* Mobile-Friendly Layout */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-title {
+    font-size: 1.4rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .contest-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* No Contests Message */
+.no-contests {
+  text-align: center;
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  box-shadow: 0 0 20px rgba(0, 255, 242, 0.1);
+}
+
+/* Share Buttons */
+.contest-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 255, 242, 0.2);
+}
+
+.action-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+}
+
+.action-btn.whatsapp {
+  background-color: #25D366;
+}
+
+.action-btn.whatsapp:hover {
+  background-color: #128C7E;
+}
+
+.action-btn.facebook {
+  background-color: #1877F2;
+}
+
+.action-btn.facebook:hover {
+  background-color: #0D65D9;
+}
+
+.action-btn.link {
+  background-color: var(--primary);
+}
+
+.action-btn.link:hover {
+  background-color: var(--secondary);
+}
+
+/* Notification */
+.copy-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 255, 242, 0.9);
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  animation: fadeInOut 2s ease;
+  z-index: 1000;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
