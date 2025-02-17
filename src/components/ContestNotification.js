@@ -7,7 +7,6 @@ const ContestNotification = () => {
   const [activePlatform, setActivePlatform] = useState("All");
   const [copiedMessage, setCopiedMessage] = useState("");
 
-  // Helper function to format date
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const options = {
@@ -19,7 +18,6 @@ const ContestNotification = () => {
     return date.toLocaleDateString("en-US", options);
   };
 
-  // Helper function to format time in IST
   const formatTimeIST = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleTimeString("en-US", {
@@ -30,14 +28,12 @@ const ContestNotification = () => {
     });
   };
 
-  // Generate contest link based on platform
   const getContestLink = (contest) => {
     if (contest.site === "Codeforces") {
-      // Extract contest ID from name or use a default
-      const contestId = "1234"; // You'll need to modify this based on your data
+      console.log(contest);
+      const contestId = "1234"; 
       return `https://codeforces.com/contests/${contestId}`;
     } else if (contest.site === "AtCoder") {
-      // Format AtCoder URL
       const contestId = contest.name.toLowerCase().replace(/\s+/g, "_");
       return `https://atcoder.jp/contests/${contestId}`;
     }
@@ -46,7 +42,6 @@ const ContestNotification = () => {
 
   // Format WhatsApp message
   const formatWhatsAppMsg = (contest) => {
-    // const date = new Date(contest.timestamp);
     const timeIST = formatTimeIST(contest.timestamp);
     return `${contest.name} will start on ${formatDate(
       contest.timestamp
@@ -81,6 +76,7 @@ const ContestNotification = () => {
       const response = await fetch("https://codeforces.com/api/contest.list");
       const data = await response.json();
       if (data.status === "OK") {
+        console.log(data.result);
         const upcoming = data.result
           .filter((contest) => contest.phase === "BEFORE")
           .map((contest) => ({
@@ -92,6 +88,7 @@ const ContestNotification = () => {
             ).toLocaleString(),
             timestamp: contest.startTimeSeconds * 1000,
           }));
+          console.log(upcoming);
         return upcoming;
       }
       return [];
@@ -117,7 +114,7 @@ const ContestNotification = () => {
   const fetchPlatformContests = async (platform) => {
     setLoading(true);
     setContests([]);
-    setActivePlatform(platform); // Update active platform
+    setActivePlatform(platform);
 
     try {
       const contestList =
